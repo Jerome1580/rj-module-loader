@@ -1,0 +1,17 @@
+{
+  "name": "rj-module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run build-fast -- --watch",
+    "build": "tsup",
+    "prepublishOnly": "npm run build",
+    "test": "npm run build && npm run test-only",
+    "test-only": "vitest run",
+    "build-fast": "npm run build -- --no-dts"
+  },
+  "keywords": [],
+  "author": "饶驹",
+  "license": "ISC"
+}
