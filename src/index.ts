@@ -43,7 +43,9 @@ type DATA = {
         public factory: (r: any, e: any, m: any) => any
         public callback: (...arg: any[]) => void
 
+        // 谁依赖我
         private _waitings: any
+        // 我依赖谁
         private _remain: number
 
         constructor(uri: any, deps: any[]) {
@@ -69,6 +71,7 @@ type DATA = {
         static use(deps, callback, uri) {
             let m = Module.get(uri, isArray(deps) ? deps : [deps])
             m.callback = function () {
+                // debugger
                 let exports: any[] = []
                 let uris = m.resolve()
                 for (let i = 0; i < uris.length; i++) {
@@ -132,6 +135,7 @@ type DATA = {
 
         // 分析主干依赖项
         public load() {
+            // debugger
             let m = this
             m.status = STATUS.LOADING // 正在加载依赖项
             let uris = m.resolve() // 获取资源
@@ -140,6 +144,7 @@ type DATA = {
             let seed;
             for (let i = 0; i < len; i++) {
                 seed = Module.get(uris[i])
+                // debugger
                 if (seed.status < STATUS.LOADED) {// LOAD == 4 准备加载
                     seed._waitings[m.uri] = seed._waitings[m.uri] || 1
                 } else {
@@ -159,11 +164,18 @@ type DATA = {
             for (let i = 0; i < len; i++) {
                 seed = Module.get(uris[i])
                 if (seed.status < STATUS.FETCHED) {
+                   // 给 requestCache 赋值
                     seed.fetch(requestCache)
                 }
 
             }
 
+            /**
+             * requestCache {
+             *     ['localhost://a.js']:() => start.up('uri/a.js',save a info and load a)
+             *     ['localhost://b.js']:() => start.up('uri/b.js',save b info and load b)
+             * }
+             */
             for (let uri in requestCache) {
                 requestCache[uri]()
             }
@@ -195,7 +207,7 @@ type DATA = {
             }
         }
 
-        // 资源定位
+        // 资源定位，收集该模块的所有依赖
         public resolve() {
             let mod = this
             let ids = mod.deps
@@ -208,18 +220,28 @@ type DATA = {
         }
 
         public onload() {
+            // debugger
             let m = this;
             m.status = STATUS.LOADED
             if (m.callback) {
                 m.callback()
             }
-            let waitings = m._waitings
-            for (let key in waitings) {
+            /**
+             * a.js 的 waitings : {
+             *     ['主程序 _use_0_.js']:1,
+             *     ['主程序 _use_1_.js']:1
+             *
+             * }
+             */
+            let waitings = m._waitings  // waiting 就是当前主程序
+            for (let key in waitings) { // 遍历当前所有依赖该模块的 模块
                 let m = cache[key]
+                // 取出当前主应用的依赖数
                 m._remain -= waitings[key]
+
+                // 如果依赖这个 a.js 的依赖项，全部加载完，加载主程序
                 if (m._remain === 0) {
                     m.onload()
-
                 }
 
             }
