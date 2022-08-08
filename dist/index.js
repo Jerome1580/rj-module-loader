@@ -13,7 +13,7 @@
     return Object.prototype.toString.call(obj) === "[object Array]";
   };
   let isFunction = function(obj) {
-    return Object.prototype.toString.call(obj) === "[object Funtion]";
+    return Object.prototype.toString.call(obj) === "[object Function]";
   };
   class Module {
     constructor(uri, deps) {
@@ -74,11 +74,8 @@
       m.status = 5 /* EXECUTING */;
       let uri = m.uri;
       function require2(id) {
-        return Module.get(require2.resolve(id)).exec();
+        return Module.get(startUp.resolve(id, uri)).exec();
       }
-      require2.resolve = function(id) {
-        return startUp.resolve(id, uri);
-      };
       let factory = m.factory;
       let exports = factory(require2, m.exports = {}, m);
       if (exports === void 0) {

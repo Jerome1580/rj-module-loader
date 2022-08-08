@@ -31,7 +31,7 @@ type DATA = {
     }
     let isFunction = function (obj) {
         // @ts-ignore
-        return Object.prototype.toString.call(obj) === '[object Funtion]'
+        return Object.prototype.toString.call(obj) === '[object Function]'
     }
 
     // 构造函数 模块初始化数据
@@ -43,7 +43,7 @@ type DATA = {
         public factory: (r: any, e: any, m: any) => any
         public callback: (...arg: any[]) => void
 
-        // 谁依赖我
+        // 谁依赖我，谁等着我
         private _waitings: any
         // 我依赖谁
         private _remain: number
@@ -54,7 +54,7 @@ type DATA = {
             this.exports = null
             this.status = STATUS.INIT
             this._waitings = {}
-            this._remain = 0
+            this._remain = 0  // 我依赖的数量
             this.factory = f => f
             this.callback = f => {
             }
@@ -63,6 +63,15 @@ type DATA = {
         // 检测缓存对象是否有当前模块信息
         static get(uri, deps = []) {
             if (!cache[uri]) {
+                /**
+                 * cache {
+                 *     localhost://a.js : {
+                 *         id:,
+                 *         deps:,
+                 *         factory:
+                 *     }
+                 * }
+                 */
                 cache[uri] = new Module(uri, deps)
             }
             return cache[uri]
@@ -92,6 +101,7 @@ type DATA = {
 
         // 定义一个模块
         static define(factory: () => void) {
+            // debugger
             let deps;
             if (isFunction(factory)) {
                 deps = parseDependencies(factory.toString())
@@ -115,12 +125,9 @@ type DATA = {
             let uri = m.uri
 
             function require(id) {
-                return Module.get(require.resolve(id)).exec()
+                return Module.get(startUp.resolve(id, uri)).exec()
             }
 
-            require.resolve = function (id) {
-                return startUp.resolve(id, uri)
-            }
 
             let factory = m.factory
             let exports = factory(require, m.exports = {}, m)
@@ -138,12 +145,12 @@ type DATA = {
             // debugger
             let m = this
             m.status = STATUS.LOADING // 正在加载依赖项
-            let uris = m.resolve() // 获取资源
+            let uris = m.resolve() // 获取该模块所有依赖的资源
             let len = m._remain = uris.length
 
             let seed;
             for (let i = 0; i < len; i++) {
-                seed = Module.get(uris[i])
+                seed = Module.get(uris[i]) // 没有缓存注册缓存
                 // debugger
                 if (seed.status < STATUS.LOADED) {// LOAD == 4 准备加载
                     seed._waitings[m.uri] = seed._waitings[m.uri] || 1
@@ -163,7 +170,7 @@ type DATA = {
             let requestCache = {}
             for (let i = 0; i < len; i++) {
                 seed = Module.get(uris[i])
-                if (seed.status < STATUS.FETCHED) {
+                if (seed.status < STATUS.FETCHED) { // 如果没有请求过，注册请求事件，包括分析依赖啊等等
                    // 给 requestCache 赋值
                     seed.fetch(requestCache)
                 }
@@ -203,6 +210,7 @@ type DATA = {
                 if (anonymousMeta) {
                     m.save(uri, anonymousMeta)
                 }
+                // a 加载完后，要执行
                 m.load()
             }
         }

@@ -1,0 +1,171 @@
+<mxfile host="65bd71144e">
+    <diagram id="19Jc3MrkVbVnd3cA4Fp6" name="第 1 页">
+        <mxGraphModel dx="1156" dy="563" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="4" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="2" target="3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="调用startUp.use" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="4">
+                    <mxGeometry x="-0.0625" y="2" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="2" value="注入全局&lt;br&gt;startUp" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="60" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="" style="edgeStyle=none;html=1;endArrow=classicThin;endFill=1;" edge="1" parent="1" source="3" target="9">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Module.use&lt;br&gt;注册一个模块" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="200" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="" style="edgeStyle=none;html=1;dashed=1;endArrow=classicThin;endFill=1;" edge="1" parent="1" source="6" target="3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="hook" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="7">
+                    <mxGeometry x="-0.4286" y="1" relative="1" as="geometry">
+                        <mxPoint x="9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="6" value="Module.preload" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="200" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="" style="edgeStyle=none;html=1;endArrow=classicThin;endFill=1;" edge="1" parent="1" source="9" target="12">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="&lt;span&gt;Module.get 拿到模块的缓存信息&lt;/span&gt;" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="321" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="" style="edgeStyle=none;html=1;endArrow=classicThin;endFill=1;" edge="1" parent="1" source="12" target="14">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="" style="edgeStyle=none;html=1;endArrow=classicThin;endFill=1;" edge="1" parent="1" source="12" target="19">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;endArrow=classicThin;endFill=1;" edge="1" parent="1" source="12" target="21">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="register注册" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="25">
+                    <mxGeometry x="-0.2296" y="1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="12" value="注册模块的callback事件，" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="461" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="" style="edgeStyle=none;html=1;endArrow=classicThin;endFill=1;" edge="1" parent="1" source="14" target="16">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="m.resolve() 收集模块的依赖" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="461" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="注入params" style="edgeStyle=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;" edge="1" parent="1" source="16" target="21">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="依次执行依赖的方法,m.exec()&lt;br&gt;拿到返回值" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="600" y="461" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="35" value="" style="edgeStyle=none;html=1;endArrow=classicThin;endFill=1;" edge="1" parent="1" source="19" target="34">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="开始加载模块 m.load" style="whiteSpace=wrap;html=1;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="200" y="601" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="callback" style="ellipse;whiteSpace=wrap;html=1;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="420" y="560" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" value="&lt;pre style=&quot;background-color: #2d2a2e ; color: #fcfcfa ; font-family: &amp;#34;jetbrains mono&amp;#34; , monospace ; font-size: 12.0pt&quot;&gt;&lt;span style=&quot;color: #a9dc76&quot;&gt;STATUS&lt;/span&gt;&lt;span style=&quot;color: #939293&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;font-style: italic&quot;&gt;LOADING&lt;/span&gt;&lt;/pre&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="585" width="60" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="37" value="" style="edgeStyle=none;html=1;endArrow=classicThin;endFill=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="34" target="58">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="425.0000000000002" y="800.4999999999998" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="34" value="1. 收集所有依赖&lt;br&gt;2. 记录该模块依赖数量m._remain&lt;br&gt;3. 给每个被依赖项a.js，注入waitings，显示谁依赖我&lt;br&gt;4. 如果我依赖的模块，状态大于loaded，则依赖的模块a.js的remain--" style="whiteSpace=wrap;html=1;rounded=1;align=left;" vertex="1" parent="1">
+                    <mxGeometry x="164" y="741" width="200" height="119" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="触发" style="edgeStyle=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=classicThin;endFill=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="58" target="21">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="485.0000000000002" y="770.4999999999998" as="sourcePoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="61" value="Y" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;" vertex="1" connectable="0" parent="38">
+                    <mxGeometry x="-0.3017" y="5" relative="1" as="geometry">
+                        <mxPoint y="-1" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="40" value="" style="edgeStyle=none;html=1;endArrow=classicThin;endFill=1;" edge="1" parent="1" target="39">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="485.0000000000002" y="830.4999999999998" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="60" value="n" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#000000;" vertex="1" connectable="0" parent="40">
+                    <mxGeometry x="0.0283" y="1" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="45" value="" style="edgeStyle=none;html=1;fontColor=#FFFFFF;endArrow=classicThin;endFill=1;" edge="1" parent="1" source="39" target="44">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="&lt;font color=&quot;#000000&quot;&gt;requestCache&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontColor=#FFFFFF;" vertex="1" connectable="0" parent="45">
+                    <mxGeometry x="-0.2125" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="39" value="如果依赖状态小于 fetch，循环去加载依赖的资源，执行m.fetch" style="whiteSpace=wrap;html=1;align=left;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="425" y="910" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="&lt;pre style=&quot;background-color: rgb(45 , 42 , 46) ; font-family: &amp;#34;jetbrains mono&amp;#34; , monospace ; font-size: 12pt&quot;&gt;&lt;span style=&quot;color: rgb(169 , 220 , 118)&quot;&gt;STATUS&lt;/span&gt;&lt;font color=&quot;#ffffff&quot;&gt;.FETCHED&lt;/font&gt;&lt;/pre&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;" vertex="1" parent="1">
+                    <mxGeometry x="295" y="950" width="130" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="m.define" style="edgeStyle=none;html=1;fontColor=#000000;endArrow=classicThin;endFill=1;" edge="1" parent="1" source="44" target="48">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="1.组合需要请求的对象&lt;br&gt;startUp.request(uri,onRequest)&lt;br&gt;2. 动态创建 script 标签，加载 a.js" style="whiteSpace=wrap;html=1;align=left;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="420" y="1050" width="130" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="m.save" style="edgeStyle=none;html=1;fontColor=#000000;endArrow=classicThin;endFill=1;" edge="1" parent="1" source="48" target="50">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="1. a.js 是一个define的一个模块，script加载完后,分析当前模块依赖deps，和 factory" style="whiteSpace=wrap;html=1;align=left;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="700" y="1055" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="52" style="edgeStyle=none;html=1;fontColor=#000000;endArrow=classicThin;endFill=1;entryX=-0.035;entryY=0.502;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="50" target="19">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="9.999999999999886" y="1200" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="20" y="1230"/>
+                            <mxPoint x="20" y="900"/>
+                            <mxPoint x="20" y="630"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="50" value="1. 保存当前模块信息save&lt;br&gt;2. m.load加载模块" style="whiteSpace=wrap;html=1;align=left;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="700" y="1195" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="&lt;pre style=&quot;background-color: #2d2a2e ; color: #fcfcfa ; font-family: &amp;quot;jetbrains mono&amp;quot; , monospace ; font-size: 12.0pt&quot;&gt;&lt;span style=&quot;color: #a9dc76&quot;&gt;STATUS&lt;/span&gt;&lt;span style=&quot;color: #939293&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;font-style: italic&quot;&gt;LOADED&lt;/span&gt;&lt;/pre&gt;" style="text;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="510" y="730" width="130" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="&lt;pre style=&quot;background-color: #2d2a2e ; color: #fcfcfa ; font-family: &amp;quot;jetbrains mono&amp;quot; , monospace ; font-size: 12.0pt&quot;&gt;&lt;span style=&quot;color: #a9dc76&quot;&gt;STATUS&lt;/span&gt;&lt;span style=&quot;color: #939293&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;font-style: italic&quot;&gt;SAVED&lt;/span&gt;&lt;/pre&gt;" style="text;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="590" y="1160" width="140" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="&lt;pre style=&quot;background-color: #2d2a2e ; color: #fcfcfa ; font-family: &amp;quot;jetbrains mono&amp;quot; , monospace ; font-size: 12.0pt&quot;&gt; &lt;span style=&quot;color: #a9dc76&quot;&gt;STATUS&lt;/span&gt;&lt;span style=&quot;color: #939293&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;font-style: italic&quot;&gt;EXECUTING&lt;/span&gt;&lt;/pre&gt;" style="text;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="610" y="420" width="190" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="&lt;pre style=&quot;background-color: #2d2a2e ; color: #fcfcfa ; font-family: &amp;quot;jetbrains mono&amp;quot; , monospace ; font-size: 12.0pt&quot;&gt;&lt;span style=&quot;color: #a9dc76&quot;&gt;STATUS&lt;/span&gt;&lt;span style=&quot;color: #939293&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;font-style: italic&quot;&gt;EXECUTED&lt;/span&gt;&lt;/pre&gt;" style="text;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="570" y="550" width="170" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" value="&lt;span style=&quot;text-align: left&quot;&gt;如果该模块依赖项的remain 是 0 。则可以触发 callback&lt;/span&gt;" style="rhombus;whiteSpace=wrap;html=1;dashed=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="406" y="750" width="146" height="100.25" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="&lt;pre style=&quot;background-color: #2d2a2e ; color: #fcfcfa ; font-family: &amp;#34;jetbrains mono&amp;#34; , monospace ; font-size: 12.0pt&quot;&gt; &lt;span style=&quot;color: #a9dc76&quot;&gt;STATUS&lt;/span&gt;&lt;span style=&quot;color: #939293&quot;&gt;.&lt;/span&gt;&lt;span style=&quot;font-style: italic&quot;&gt;INIT&lt;/span&gt;&lt;/pre&gt;" style="text;whiteSpace=wrap;html=1;fontColor=#000000;" vertex="1" parent="1">
+                    <mxGeometry x="319" y="190" width="190" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
